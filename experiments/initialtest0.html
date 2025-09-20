@@ -127,12 +127,12 @@
         async function init() {
 
             // Check if the languageModel API is available
-            if (!window.ai?.languageModel?.create) {
+            if (!LanguageModel?.create) {
                 alert("The Built-in AI API (languageModel.create) is not available.");
                 return;
             }
 
-            const availability = await window.ai.languageModel.availability();
+            const availability = await LanguageModel.availability();
             console.log("Model availability:", availability);
 
             if (availability !== 'available') {
@@ -140,7 +140,7 @@
                 return;
             }
 
-            model = await window.ai.languageModel.create();
+            model = await LanguageModel.create();
 
         }
 
