@@ -8,7 +8,7 @@ Output ONLY JavaScript code. NO raw text, NO explanations, NO markdown.`,
 );
 
 const createCoder2 = coderWith(
-  `Convert user question to valid JavaScript code that solves it programatically. Assign answer as a self explanatory JSON object to 'result'.
+  `Convert user question to valid JavaScript code that solves it programatically and returns structured data. Assign answer as JSON object to 'result'.
 Output ONLY JavaScript code. NO raw text, NO explanations, NO markdown.
 First line of your code must be a comment with steps you want to take.`,
   "coder2"
