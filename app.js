@@ -1,12 +1,10 @@
 import { $, htm$ } from "./ui-framework.js";
-import { createThinkers } from "./thinkers/index.js";
+import { createThinkers, getThinkers } from "./thinkers/index.js";
 
 const samples = [
   `How many r letters are there in 'rare strawberry arrangement' ?`,
-  `Explain how antibiotics work in 2 sentences.`,
-  `Name 3 important European kings`,
-  `If I have 500$ and invest it on 1.2% yearly rate with monthly capitalization, how much do I get after 8 months?`,
-  `What's the square root of 123?`,
+  `What's heavier? A kilogram of stones or 1024 grams of cotton?`,
+  `What's the first title on the page https://en.wikipedia.org/wiki/Talk:Hummingbird?`,
   `What's 0.3 - 0.2?`,
 ];
 
@@ -47,7 +45,10 @@ async function init() {
     return;
   }
 
-  thinkers = await createThinkers();
+  thinkers = await createThinkers(null, [
+    getThinkers().createRegular,
+    getThinkers().createCoder2,
+  ]);
 
   const $samples = $(".samples");
   samples.map((sample) => {

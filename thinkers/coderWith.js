@@ -12,7 +12,7 @@ function prepareCode(code) {
 
 async function executeCode(code, modelCode, say, attempt = 1) {
   try {
-    return evaluate(code);
+    return await evaluate(code);
   } catch (e) {
     console.log(e);
     code = await modelCode.prompt(`\n ${e.message}\n\n fix the error.
@@ -21,7 +21,7 @@ Respond only with valid javascript code. NO explanations, NO markdown.`);
     say(`Error. ${e.message} Fix attempt ${attempt}:`, "code");
     say(code, "code");
     if(attempt < 3) {
-      return executeCode(code, modelCode, say, attempt + 1);
+      return await executeCode(code, modelCode, say, attempt + 1);
     } else {
       return { error: e.message };
     }

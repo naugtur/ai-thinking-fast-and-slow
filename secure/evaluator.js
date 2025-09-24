@@ -1,9 +1,22 @@
-import "./ses.mjs";
-
 lockdown();
 
-export const evaluate = (code) => {
-  const c = new Compartment({Math, Date, console, JSON, atob, btoa});
+const evaluateSilent = (code) => {
+  const askFetch = (url, options) => {
+    if (confirm(`Allow code to fetch ${url} ?`)) {
+      return fetch(url, options);
+    } else {
+      return Promise.reject(new Error("Fetch not allowed by user"));
+    }
+  };
+  const c = new Compartment({
+    Math,
+    Date,
+    fetch: askFetch,
+    console,
+    JSON,
+    atob,
+    btoa,
+  });
 
   // make declaring result optional
   return c.evaluate(`
@@ -14,3 +27,6 @@ const out = (() => {
 })();
 out;`);
 };
+
+const evaluate = evaluateSilent;
+export { evaluate };
