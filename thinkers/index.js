@@ -10,7 +10,7 @@ Output ONLY JavaScript code. NO dependencies, NO require, NO raw text, NO explan
 const createCoder2 = coderWith(
   `Convert user question to valid JavaScript code that solves it programatically and returns structured data. Assign answer as JSON object to 'result'.
 Output ONLY JavaScript code. NO dependencies, NO require, NO raw text, NO explanations, NO markdown.
-First line of your code must be a comment with steps you want to take.`,
+First line of your code must be a comment with steps you want to take. Never hardcode the result value if it can be computed.`,
   "coder2"
 );
 
