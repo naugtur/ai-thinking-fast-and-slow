@@ -2,7 +2,7 @@ import { $, htm$ } from "./ui-framework.js";
 import { createThinkers, getThinkers } from "./thinkers/index.js";
 
 const samples = [
-  `How many r letters are there in 'rare strawberry arrangement' ?`,
+  `How many r letters are there in 'Triangular strawberry arrangement' ?`,
   `What's heavier? A kilogram of stones or 1024 grams of cotton?`,
   `What's the first title on the page https://en.wikipedia.org/wiki/Talk:Hummingbird?`,
   `What's 0.3 - 0.2?`,

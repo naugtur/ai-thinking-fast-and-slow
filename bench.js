@@ -10,7 +10,7 @@ const thinkers = await createThinkers(null, [
 ]);
 
 const samples = [
-  `How many r letters are there in 'radical strawberry arrangement' ?`,
+  `How many r letters are there in 'Triangular strawberry arrangement' ?`,
   `What's the square root of 12345?`,
   `What's heavier? A kilogram of stones or 1024 grams of cotton?`,
   `If I have 500$ and invest it on 1.2% yearly rate with monthly capitalization. How much money do I have 3 months later? How much after 6?`,
