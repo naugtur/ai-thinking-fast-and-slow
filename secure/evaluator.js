@@ -1,6 +1,6 @@
 lockdown();
 
-const evaluateSilent = (code) => {
+const evaluateSilent = (code, resultCallback) => {
   const askFetch = (url, options) => {
     if (confirm(`Allow code to fetch ${url} ?`)) {
       return fetch(url, options);
@@ -9,6 +9,7 @@ const evaluateSilent = (code) => {
     }
   };
   const c = new Compartment({
+    resultCb: resultCallback,
     Math,
     Date,
     fetch: askFetch,
@@ -19,13 +20,7 @@ const evaluateSilent = (code) => {
   });
 
   // make declaring result optional
-  return c.evaluate(`
-var result; 
-const out = (() => { 
-  ${code};
-  return result;
-})();
-out;`);
+  return c.evaluate(code);
 };
 
 const evaluate = evaluateSilent;

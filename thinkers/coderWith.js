@@ -11,8 +11,13 @@ function prepareCode(code) {
 }
 
 async function executeCode(code, modelCode, say, attempt = 1) {
+  const out = Promise.withResolvers();
+  const callback = (result) => {
+    out.resolve(result);
+  };
+
   try {
-    return await evaluate(code);
+    await evaluate(code, callback);
   } catch (e) {
     console.log(e);
     code = await modelCode.prompt(`\n ${e.message}\n\n fix the error.
@@ -21,11 +26,13 @@ Respond only with valid javascript code. NO explanations, NO markdown.`);
     say(`Error. ${e.message} Fix attempt ${attempt}:`, "code");
     say(code, "code");
     if(attempt < 3) {
-      return await executeCode(code, modelCode, say, attempt + 1);
+      await executeCode(code, modelCode, say, attempt + 1);
     } else {
-      return { error: e.message };
+      out.reject(e);
     }
   }
+
+  return out.promise;
 }
 
 async function prompt(create, prompt, say) {
