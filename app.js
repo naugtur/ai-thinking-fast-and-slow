@@ -46,7 +46,7 @@ async function init() {
   }
 
   thinkers = await createThinkers(null, [
-    // getThinkers().createRegular,
+    getThinkers().createRegular,
     getThinkers().createCoder2,
   ]);
 

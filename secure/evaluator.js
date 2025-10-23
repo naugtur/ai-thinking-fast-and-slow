@@ -19,8 +19,22 @@ const evaluateSilent = (code, resultCallback) => {
     btoa,
   });
 
+  Object.defineProperty(c.globalThis, "result", {
+    get: () => {},
+    set: (v) => {
+      resultCallback(v);
+    },
+  });
+
   // make declaring result optional
-  return c.evaluate(code);
+  return c.evaluate(`
+const out = (() => {
+  ${code};
+  return result;
+})();
+if(out) {
+resultCb(out)
+}`);
 };
 
 const evaluate = evaluateSilent;

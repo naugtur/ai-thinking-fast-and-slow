@@ -8,5 +8,5 @@ async function prompt(create, prompt, say) {
 }
 
 export async function create(modelCreate) {
-  return { prompt: prompt.bind(null, modelCreate), name: 'basic' };
+  return { prompt: prompt.bind(null, modelCreate), name: "basic" };
 }

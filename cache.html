@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+        <title>CACHE</title>
+        <link rel="stylesheet" href="./style.css" />
+        <style>
+            textarea {
+                width: 100%;
+                height: 80vh;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="box">
+            <div class="samples">
+                <button id="clear">! clear !</button>
+                <button id="cp">copy</button>
+            </div>
+
+            <div id="out">
+                <textarea></textarea>
+            </div>
+        </div>
+
+        <script type="module">
+            const $ = document.querySelector.bind(document);
+            const dump = $(".box textarea");
+
+            dump.value = JSON.stringify(localStorage, null, 2);
+
+            $("#clear").onclick = () => {
+                if (confirm("Delete all cached prompts?")) {
+                    localStorage.clear();
+                }
+            };
+            $("#cp").onclick(() => {});
+        </script>
+    </body>
+</html>

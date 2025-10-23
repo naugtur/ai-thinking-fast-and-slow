@@ -31,7 +31,7 @@
 
 .bench {
     .box {
-        max-width: 90%;
+        max-width: 99%;
     }
     #out {
         display: flex;
