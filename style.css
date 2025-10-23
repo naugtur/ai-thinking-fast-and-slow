@@ -29,47 +29,48 @@
     padding: 10px;
 }
 
+.out {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .bench {
     .box {
         max-width: 99%;
     }
-    #out {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
+}
 
-    #out > article {
-        border: 1px solid #ddd;
-        padding: 15px;
-        border-radius: 4px;
-        background: white;
-        page-break-inside: avoid;
-        break-inside: avoid;
-    }
+.out > article {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 4px;
+    background: white;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
 
-    #out > article > section:first-child {
-        font-weight: bold;
-        border-bottom: 1px solid #eee;
-        padding: 10px;
-        margin-bottom: 15px;
-    }
+.out > article > section:first-child {
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+    margin-bottom: 15px;
+}
 
-    #out > article > .answers {
-        display: flex;
-        gap: 15px;
-    }
+.out > article > .answers {
+    display: flex;
+    gap: 15px;
+}
 
-    #out > article > .answers > section {
-        flex: 1;
-        padding: 10px;
-        border-left: 1px solid #eee;
-        min-width: 200px;
-    }
+.out > article > .answers > section {
+    flex: 1;
+    padding: 10px;
+    border-left: 1px solid #eee;
+    min-width: 200px;
+}
 
-    #out > article > .answers > section:first-child {
-        border-left: none;
-    }
+.out > article > .answers > section:first-child {
+    border-left: none;
 }
 
 #out > i {
